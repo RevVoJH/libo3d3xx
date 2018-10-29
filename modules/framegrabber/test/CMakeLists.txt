@@ -1,20 +1,30 @@
-set(GTEST_CMAKE_DIR "/usr/src/gtest")
+#find_package(googletest REQUIRED)
+#set(GTEST_CMAKE_DIR "/usr/src/gtest")
 enable_testing()
-add_subdirectory(${GTEST_CMAKE_DIR} gtest_bin)
+#add_subdirectory(${GTEST_CMAKE_DIR} gtest_bin)
 file(GLOB FRAMEGRABBER_TEST_SOURCES *.cpp)
 add_executable(o3d3xx-framegrabber-tests
                ${FRAMEGRABBER_TEST_SOURCES})
+
+#find_package(glog REQUIRED)
+#find_package(googlemock REQUIRED)
 if(BUILD_SHARED_LIBS)
   target_link_libraries(o3d3xx-framegrabber-tests
                         gtest_main o3d3xx_framegrabber_shared
-                        ${O3D3XX_CAMERA_LIBRARIES}
+                        o3d3xx_camera}
                         )
+#  message("YES\n")
 else()
   target_link_libraries(o3d3xx-framegrabber-tests
                         gtest_main o3d3xx_framegrabber_static
-                        ${O3D3XX_CAMERA_LIBRARIES}
+                        o3d3xx_camera}
                         )
+#  message("NO\n")
 endif(BUILD_SHARED_LIBS)
+target_link_libraries(o3d3xx-framegrabber-tests
+#                     gtest_main 
+                     o3d3xx_framegrabber
+                     o3d3xx_camera)
 
 if(CMAKE_CROSSCOMPILING)
   set_target_properties(o3d3xx-framegrabber-tests PROPERTIES

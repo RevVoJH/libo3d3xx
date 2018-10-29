@@ -6,6 +6,8 @@ find_library(LIB_boost_program_options NAMES boost_program_options)
 # Empty list
 set(O3D3XX_FRAMEGRABBER_EXE_TARGETS)
 
+option(BUILD_SHARED_LIBS ON)
+
 #-----------------------------------------------
 # o3d3xx-hz
 #-----------------------------------------------
@@ -14,13 +16,13 @@ if(BUILD_EXE_HZ)
 
   if(BUILD_SHARED_LIBS)
     target_link_libraries(o3d3xx-hz
-                          o3d3xx_framegrabber_shared
-                          ${O3D3XX_CAMERA_LIBRARIES}
+                          o3d3xx_framegrabber
+                          o3d3xx_camera
                           ${LIB_boost_program_options})
   else()
     target_link_libraries(o3d3xx-hz
                           o3d3xx_framegrabber_static
-                          ${O3D3XX_CAMERA_LIBRARIES}
+                          o3d3xx_camera
                           ${LIB_boost_program_options}
                           )
   endif(BUILD_SHARED_LIBS)
@@ -40,13 +42,13 @@ if(BUILD_EXE_SCHEMA)
 
   if(BUILD_SHARED_LIBS)
     target_link_libraries(o3d3xx-schema
-                          o3d3xx_framegrabber_shared
-                          ${O3D3XX_CAMERA_LIBRARIES}
+                          o3d3xx_framegrabber
+                          o3d3xx_camera
                           ${LIB_boost_program_options})
   else()
     target_link_libraries(o3d3xx-schema
                           o3d3xx_framegrabber_static
-                          ${O3D3XX_CAMERA_LIBRARIES}
+                          o3d3xx_camera
                           ${LIB_boost_program_options}
                           )
   endif(BUILD_SHARED_LIBS)

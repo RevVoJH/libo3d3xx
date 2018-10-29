@@ -18,7 +18,7 @@
 #ifndef __O3D3XX_CAMERA_MODULE_H__
 #define __O3D3XX_CAMERA_MODULE_H__
 
-#include "o3d3xx_camera/version.h"
+//#include "o3d3xx_camera/version.h"
 #include "o3d3xx_camera/err.h"
 #include "o3d3xx_camera/util.h"
 #include "o3d3xx_camera/cmdline_opts.h"

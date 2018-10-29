@@ -1,7 +1,7 @@
 ################################################
 ## Build the command-line tools
 ################################################
-
+option(BUILD_SHARED_LIBS "Build shared libs" ON)
 # Empty list
 set(O3D3XX_IMAGE_EXE_TARGETS)
 
@@ -13,11 +13,13 @@ find_library(LIB_boost_program_options NAMES boost_program_options)
 if(BUILD_EXE_VIEWER)
   add_executable(o3d3xx-viewer o3d3xx-viewer.cpp)
 
+  target_link_libraries(o3d3xx-viewer o3d3xx_camera o3d3xx_framegrabber o3d3xx_image)
+
   if(BUILD_SHARED_LIBS)
     target_link_libraries(o3d3xx-viewer
-      o3d3xx_image_shared
-      ${O3D3XX_CAMERA_LIBRARIES}
-      ${O3D3XX_FRAMEGRABBER_LIBRARIES}
+      o3d3xx_image
+      o3d3xx_camera
+      o3d3xx_framegrabber
       ${PCL_VISUALIZATION_LIBRARIES}
       ${OpenCV_LIBRARIES}
       ${LIB_boost_program_options}
@@ -25,8 +27,8 @@ if(BUILD_EXE_VIEWER)
   else()
     target_link_libraries(o3d3xx-viewer
       o3d3xx_image_static
-      ${O3D3XX_CAMERA_LIBRARIES}
-      ${O3D3XX_FRAMEGRABBER_LIBRARIES}
+      o3d3xx_camera
+      o3d3xx_framegrabber
       ${PCL_VISUALIZATION_LIBRARIES}
       ${OpenCV_LIBRARIES}
       ${LIB_boost_program_options}

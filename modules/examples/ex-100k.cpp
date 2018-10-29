@@ -41,6 +41,7 @@ int main(int argc, const char **argv)
   //
   // setup
   //
+
   o3d3xx::Camera::Ptr cam = std::make_shared<o3d3xx::Camera>();
   cam->RequestSession();
   cam->SetOperatingMode(o3d3xx::Camera::operating_mode::EDIT);

@@ -35,7 +35,7 @@ int main(int argc, const char **argv)
 
     o3d3xx::NetConfig::Ptr net = cam->GetNetConfig();
     bool has_changed = true;
-    net->SetStaticIPv4Address("192.168.0.70");
+    net->SetStaticIPv4Address("192.168.0.69");
     cam->SetNetConfig(net.get(), &has_changed);
     cam->SaveNet();
 

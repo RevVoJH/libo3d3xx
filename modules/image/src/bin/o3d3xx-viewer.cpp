@@ -82,8 +82,8 @@ public:
     //
 
     // used for all 2d images
-    cv::namedWindow(this->description_, cv::WINDOW_NORMAL|cv::WINDOW_OPENGL);
-    cv::resizeWindow(this->description_, win_w, win_h);
+    //cv::namedWindow(this->description_, cv::WINDOW_NORMAL|cv::WINDOW_OPENGL);
+    //cv::resizeWindow(this->description_, win_w, win_h);
     int retval;
     double min, max;
     cv::Rect roi;
@@ -187,7 +187,7 @@ public:
                        raw_amp_colormap_img.rows);
         raw_amp_colormap_img.copyTo(display_img(roi));
 
-        cv::imshow(this->description_, display_img);
+        cv::imwrite("test.png", display_img);
 
         // `ESC', `q', or `Q' to exit
         retval = cv::waitKey(33);

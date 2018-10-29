@@ -37,6 +37,9 @@
 #include "o3d3xx_framegrabber/byte_buffer.hpp"
 #include "o3d3xx_framegrabber/pcic_schema.h"
 
+//temporary
+#include <iostream>
+
 // <Ticket><Length>CR+LF (16 bytes)
 const std::size_t o3d3xx::TICKET_ID_SZ = 16;
 const std::string o3d3xx::TICKET_image = "0000";
@@ -177,7 +180,7 @@ o3d3xx::FrameGrabber::WaitForFrame(o3d3xx::ByteBuffer* buff,
 {
   // mutex will unlock in `unique_lock' dtor if not explicitly unlocked prior
   std::unique_lock<std::mutex> lock(this->front_buffer_mutex_);
-
+std::cerr << "In the function" << std::endl;
   try
     {
       if (timeout_millis <= 0)
@@ -200,16 +203,16 @@ o3d3xx::FrameGrabber::WaitForFrame(o3d3xx::ByteBuffer* buff,
       LOG(WARNING) << "WaitForFrame: " << ex.what();
       return false;
     }
-
+std::cerr << "Received an image buffer" << std::endl;
   DLOG(INFO) << "Client fetching new image data";
   buff->SetBytes(this->front_buffer_, copy_buff);
   lock.unlock();
-
+std::cerr << "UNLOCKED" << std::endl;
   if (organize)
     {
       buff->Organize();
     }
-
+std::cerr << "organized" << std::endl;
   return true;
 }
 
