@@ -18,7 +18,7 @@ set(PUBLIC_HEADERS
         ${O3D3XX_FRAMEGRABBER_HEADER_PREFIX}/frame_grabber.h
         ${O3D3XX_FRAMEGRABBER_HEADER_PREFIX}/pcic_schema.h)
 
-find_package(Threads REQUIRED)
+#find_package(Threads REQUIRED)
 find_package(Boost REQUIRED COMPONENTS program_options system)
 
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")

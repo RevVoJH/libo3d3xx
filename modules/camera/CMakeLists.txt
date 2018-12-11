@@ -37,6 +37,7 @@ set(PUBLIC_HEADERS
         )
 
 find_package(XMLRPC REQUIRED c++ libwww-client)
+#find_package(XMLRPC REQUIRED c++)
 find_package(Boost REQUIRED COMPONENTS program_options system)
 
 #set(O3D3XX_CAMERA_INCLUDE_DIRS include)
@@ -47,35 +48,35 @@ add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${PUBLIC_HEADERS})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
                           $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-			  $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include ${XMLRPC_INCLUDE_DIRS}>)
+			  $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${XMLRPC_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} PUBLIC ${XMLRPC_INCLUDE_DIRS} ${Boost_INCLUDE_DIR})
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${PUBLIC_HEADERS}")
 
 #target_include_directories(${PROJECT_NAME} 
 #                PUBLIC ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}/modules/camera/include
-#                PUBLIC ${XMLRPC_INCLUDE_DIRS})
-
+#                PUBLIC ${xmlrpc_INCLUDE_DIRS})
+message("woeafjodifjaoweijfaoweijfoadjfpoijwej" ${XMLRPC_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME}
-                        ${XMLRPC_LIBRARIES}
                         ${Boost_LIBRARIES}
-                        xmlrpc++
-                        xmlrpc
-                        xmlrpc_abyss
-                        xmlrpc_client++
-                        xmlrpc_client
-                        xmlrpc_packetsocket
-                        xmlrpc_server
-                        xmlrpc_server++
-                        xmlrpc_server_abyss
-                        xmlrpc_server_abyss++
-                        xmlrpc_server_cgi
-                        xmlrpc_server_cgi++
-                        xmlrpc_server_pstream++
-                        xmlrpc_util
-                        xmlrpc_xmlparse
-                        xmlrpc_xmltok
-                        glog)
+#                        xmlrpc++
+#                        xmlrpc
+#                        xmlrpc_abyss
+#                        xmlrpc_client++
+#                        xmlrpc_client
+#                        xmlrpc_packetsocket
+#                        xmlrpc_server
+#                        xmlrpc_server++
+#                        xmlrpc_server_abyss
+#                        xmlrpc_server_abyss++
+#                        xmlrpc_server_cgi
+#                        xmlrpc_server_cgi++
+#                        xmlrpc_server_pstream++
+#                        xmlrpc_util
+#                        xmlrpc_xmlparse
+#                        xmlrpc_xmltok
+#			glog
+)
 
 option(BUILD_SHARED_LIBS "Build o3d3xx shared" ON)
 option(BUILD_EXE_VERSION "Build o3d3xx-version" OFF)

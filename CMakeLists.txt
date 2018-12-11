@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.5)
 set(CMAKE_DISABLE_SOURCE_CHANGES ON)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 
-project(o3d3xx LANGUAGES CXX)
+#project(o3d3xx LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 

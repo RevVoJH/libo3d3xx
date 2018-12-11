@@ -14,7 +14,7 @@ set(O3D3XX_IMAGE_HEADER_PREFIX ${PROJECT_SOURCE_DIR}/include/o3d3xx_image)
 set(PUBLIC_HEADERS
         ${O3D3XX_IMAGE_HEADER_PREFIX}/image.h)
 
-find_package(PCL 1.7 REQUIRED COMPONENTS common visualization)
+#find_package(PCL 1.7 REQUIRED COMPONENTS common visualization)
 find_package(Boost REQUIRED COMPONENTS program_options system)
 find_package(OpenCV REQUIRED)
 
@@ -22,7 +22,9 @@ add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${PUBLIC_HEADERS})
 
 target_include_directories(${PROJECT_NAME} PUBLIC 
                         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-                        $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include ${PCL_INCLUDE_DIRS}>)
+                        $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${PCL_INCLUDE_DIRS})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${PUBLIC_HEADERS}")
 

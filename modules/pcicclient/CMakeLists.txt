@@ -10,7 +10,7 @@ set(O3D3XX_PCICCLIENT_HEADER_PREFIX ${PROJECT_SOURCE_DIR}/include)
 
 set(PUBLIC_HEADERS ${O3D3XX_PCICCLIENT_HEADER_PREFIX}/o3d3xx_pcicclient.h)
 
-find_package(Threads REQUIRED)
+#find_package(Threads REQUIRED)
 find_package(Boost REQUIRED COMPONENTS program_options system)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES} ${PUBLIC_HEADERS})
